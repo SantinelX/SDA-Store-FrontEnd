@@ -1,0 +1,39 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="logo">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img class ="logo" src="assets/img/SDA%20Store%20Logo.png" alt="">
+      </a>
+    </div>
+  </div>
+  <div style="max-width: 50%; margin:auto;" class="mat-tab-nav-bar">
+    <a mat-button routerLink="#">Home</a>
+    <a mat-button routerLink="#">My Orders</a>
+    <a mat-button routerLink="#">Contact</a>
+  </div>
+  <div style="width: 300px; max-height: 60px; align-content: center">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="" value="">
+      </mat-form-field>
+    </form>
+  </div>
+  <div>
+    <a mat-button routerLink="#">
+      <mat-icon>
+        <span class="material-icons">
+         add_shopping_cart
+        </span>
+      </mat-icon>
+    </a>
+    <a mat-button routerLink="#">
+      <mat-icon>
+        <span class="material-icons">
+         manage_accounts
+        </span>
+      </mat-icon>
+    </a>
+    <a mat-raised-button color="accent" routerLink="/login">Log Out</a>
+  </div>
+</mat-toolbar>

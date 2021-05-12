@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AutorisationService} from '../autorisation.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
 
-  constructor(private authService: AutorisationService, private router: Router) { }
+  constructor(private authService: AutorisationService,
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/products']);
       console.log(data);
     }, errorMessage => {
+      this.toastr.error('The credentials you entered ar not corect.');
       console.log(errorMessage);
     });
   }

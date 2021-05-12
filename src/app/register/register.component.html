@@ -7,7 +7,7 @@
       <form>
         <mat-form-field>
           <mat-label>Email Address</mat-label>
-          <input matInput [(ngModel)]="user.email" name="email">
+          <input matInput [(ngModel)]="user.email" name="email" type="email" ngModel email="true">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Password</mat-label>
@@ -33,7 +33,7 @@
         </mat-form-field>
         <mat-form-field class="countryCityZipCode">
           <mat-label>Zip Code</mat-label>
-          <input matInput [(ngModel)]="user.address.zipCode" name="zipcode">
+          <input matInput [(ngModel)]="user.address.zipCode" name="zipcode" type="number">
         </mat-form-field>
         <br>
         <mat-form-field class="address">

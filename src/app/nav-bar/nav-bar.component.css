@@ -1,0 +1,40 @@
+.navbar {
+  justify-content: space-between;
+}
+
+span {
+  padding-right: 2rem;
+}
+a {
+  font-size: 24px;
+}
+
+.material-icons-outlined {
+  font-size: 29px;
+}
+
+.text-logo {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Monotype Corsiva", monospace;
+  alignment: left;
+}
+.material-icons {
+  font-size: 30px;
+}
+.logo{
+  width: 90px;
+  height: 60px;
+  alignment: left;
+}
+.search-input{
+  font-size: 20px;
+}
+
+.search-label{
+  font-size: 20px;
+}
+
+.search-icon {
+  font-size: 10px;
+}

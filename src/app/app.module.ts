@@ -15,6 +15,16 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import {ToastrModule } from 'ngx-toastr';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { CreateCategoryComponent } from './create-category/create-category.component';
+import {
+  CategoriesTreeViewComponent,
+  CategoryDeleteDialogComponent, CategoryUpdateDialogComponent
+} from './categories-tree-view/categories-tree-view.component';
+import {MatTreeModule, MatTreeNode} from '@angular/material/tree';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -23,7 +33,13 @@ import {ToastrModule } from 'ngx-toastr';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ProductsComponent
+    ProductsComponent,
+    NavBarComponent,
+    CreateCategoryComponent,
+    CategoriesTreeViewComponent,
+    CategoryDeleteDialogComponent,
+    CategoryUpdateDialogComponent
+
   ],
   imports: [
     BrowserModule,
@@ -37,9 +53,12 @@ import {ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatToolbarModule,
+    MatIconModule,
+    MatTreeModule,
+    MatDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  bootstrap: [AppComponent]})
 export class AppModule { }

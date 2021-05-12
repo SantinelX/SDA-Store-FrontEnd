@@ -1,0 +1,17 @@
+<form class="category-creation-form">
+  <mat-form-field>
+    <mat-label>
+      Category name:
+    </mat-label>
+    <input id="category_name" matInput placeholder="Insert category name" name="categoryName" [(ngModel)]="categoryRequestDto.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Parent category:</mat-label>
+    <mat-select name="categoryParent" [(ngModel)]="categoryRequestDto.parentId">
+      <mat-option *ngFor="let category of categoryResponsDto" value="{{category.id}}">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="save()" name="save-category">Save Category</button>
+</form>

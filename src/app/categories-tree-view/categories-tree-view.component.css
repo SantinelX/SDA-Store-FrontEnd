@@ -1,0 +1,8 @@
+.example-tree-invisible {
+  display: none;
+}
+
+.category-tree-view li,
+.category-tree-view.ul {
+  list-style-type: none;
+}

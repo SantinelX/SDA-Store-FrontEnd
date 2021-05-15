@@ -8,3 +8,4 @@ export interface CategoryRequestDto {
   name: string;
   parentId: number | null;
 }
+

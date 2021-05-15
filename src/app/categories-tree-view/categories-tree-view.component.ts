@@ -23,6 +23,10 @@ export class CategoriesTreeViewComponent implements OnInit {
               public updateDialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getAllRootCategories();
+  }
+
+  getAllRootCategories(): void {
     this.categoryService.findAllRootCategories().subscribe(response => {
       this.dataSource.data = response;
     }, error => {
@@ -45,11 +49,17 @@ export class CategoriesTreeViewComponent implements OnInit {
   // }
 
   showCategoryDeleteDialog(id: number): void {
-      this.deleteDialog.open(CategoryDeleteDialogComponent, {data: {categoryId: id}});
+      const deleteDialogReference = this.deleteDialog.open(CategoryDeleteDialogComponent, {data: {categoryId: id}});
+      deleteDialogReference.afterClosed().subscribe(data => {
+        this.getAllRootCategories();
+      });
   }
 
   showCategoryUpdateDialog(id: number): void {
-    this.updateDialog.open(CategoryUpdateDialogComponent, {data: {categoryId: id}});
+    const updateDialogReference = this.updateDialog.open(CategoryUpdateDialogComponent, {data: {categoryId: id}});
+    updateDialogReference.afterClosed().subscribe(data => {
+      this.getAllRootCategories();
+    });
   }
 }
 
@@ -60,7 +70,6 @@ export class CategoriesTreeViewComponent implements OnInit {
 
 export class CategoryDeleteDialogComponent implements OnInit {
 
-  dataSource = new  MatTreeNestedDataSource<CategoryResponseDto>();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public deleteDialog: MatDialogRef<CategoriesTreeViewComponent>,
               private categoryService: CategoryService, private toastr: ToastrService) {
@@ -74,11 +83,6 @@ export class CategoryDeleteDialogComponent implements OnInit {
     this.categoryService.delete(this.data.categoryId).subscribe((data) => {
       this.toastr.success('The category has been deleted.');
       this.deleteDialog.close();
-      this.categoryService.findAllRootCategories().subscribe(response => {
-        this.dataSource.data = response;
-      }, error => {
-        console.log(error);
-      });
     }, error => {
       this.toastr.error('Something went wrong !!!!' + error);
     });
@@ -97,8 +101,6 @@ export class CategoryDeleteDialogComponent implements OnInit {
 
 export class CategoryUpdateDialogComponent implements OnInit {
 
-  dataSource = new  MatTreeNestedDataSource<CategoryResponseDto>();
-
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public updateDialog: MatDialogRef<CategoriesTreeViewComponent>,
               private categoryService: CategoryService, private toastr: ToastrService) {
   }
@@ -111,13 +113,6 @@ export class CategoryUpdateDialogComponent implements OnInit {
     this.categoryService.update(this.data.categoryId, this.data.name).subscribe((data) => {
       this.toastr.success('The category has been updated.');
       this.updateDialog.close();
-      this.categoryService.findAllRootCategories().subscribe(response => {
-        this.dataSource.data = response;
-      }, error => {
-        console.log(error);
-      });
-    }, error => {
-      this.toastr.error('Something went wrong !!!!' + error);
     });
   }
 

@@ -21,16 +21,16 @@ export class CategoryService {
     return this.httpClient.get(this.CATEGORIES_API);
   }
 
-    create(categoryRequestDto: CategoryRequestDto): Observable<CategoryResponseDto> {
-      return this.httpClient.post<CategoryResponseDto>(this.CATEGORIES_API, categoryRequestDto);
-    }
+  create(categoryRequestDto: CategoryRequestDto): Observable<CategoryResponseDto> {
+    return this.httpClient.post<CategoryResponseDto>(this.CATEGORIES_API, categoryRequestDto);
+  }
 
-    delete(id: number): Observable<any>{
+  delete(id: number): Observable<any>{
     return this.httpClient.delete(this.CATEGORIES_API + '/delete/' + id);
-    }
+  }
 
-  update(id: number, name: CategoryRequestDto): Observable<CategoryResponseDto> {
-    return this.httpClient.put<CategoryResponseDto>(this.CATEGORIES_API + '/' + id, {updateName: name});
+  update(id: number, updatedName: CategoryRequestDto): Observable<CategoryResponseDto> {
+    return this.httpClient.put<CategoryResponseDto>(this.CATEGORIES_API + '/' + id, {name: updatedName});
   }
 
 }

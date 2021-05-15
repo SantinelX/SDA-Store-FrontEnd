@@ -25,6 +25,7 @@ import {
 } from './categories-tree-view/categories-tree-view.component';
 import {MatTreeModule, MatTreeNode} from '@angular/material/tree';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import { CreateProductComponent } from './create-product/create-product.component';
 
 
 
@@ -38,7 +39,8 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dia
     CreateCategoryComponent,
     CategoriesTreeViewComponent,
     CategoryDeleteDialogComponent,
-    CategoryUpdateDialogComponent
+    CategoryUpdateDialogComponent,
+    CreateProductComponent
 
   ],
   imports: [

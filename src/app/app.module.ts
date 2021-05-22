@@ -26,6 +26,10 @@ import {
 import {MatTreeModule, MatTreeNode} from '@angular/material/tree';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { ProductTableViewComponent } from './product-table-view/product-table-view.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -40,7 +44,8 @@ import { CreateProductComponent } from './create-product/create-product.componen
     CategoriesTreeViewComponent,
     CategoryDeleteDialogComponent,
     CategoryUpdateDialogComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    ProductTableViewComponent
 
   ],
   imports: [
@@ -59,7 +64,10 @@ import { CreateProductComponent } from './create-product/create-product.componen
     MatToolbarModule,
     MatIconModule,
     MatTreeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatGridListModule
   ],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]})

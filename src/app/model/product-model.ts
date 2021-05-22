@@ -13,10 +13,12 @@ export interface ProductRequestDto {
 }
 
 export interface ProductResponseDto {
+  id: number;
   productName: string;
   description: string;
   thumbnail: string;
-  category: CategoryResponseDto;
+  categoryId: string;
+  categoryName: string;
   price: number;
   productType: string;
   userAuthor: UserDto;
@@ -29,4 +31,17 @@ export interface ProductType {
 
 export enum ProductTyp{
   PRODUCT, ACCESORIES
+}
+
+export interface PaginatedProductResponse{
+  content: ProductResponseDto[];
+  totalElements: number;
+}
+
+export interface ProductFilters {
+  name?: string | undefined;
+  productType?: string | undefined;
+  lowPrice?: string | undefined;
+  highPrice?: string | undefined;
+  categoryId?: string | undefined;
 }

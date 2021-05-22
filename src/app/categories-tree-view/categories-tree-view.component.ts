@@ -1,10 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {CategoryService} from '../category.service';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {CategoryResponseDto} from '../model/category-model';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-categories-tree-view',
@@ -12,6 +13,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
   styleUrls: ['./categories-tree-view.component.css']
 })
 export class CategoriesTreeViewComponent implements OnInit {
+
+  @Output() categoryChangeEvent: EventEmitter<any> = new EventEmitter<any>();
 
   treeControl = new NestedTreeControl<CategoryResponseDto>(category => category.subCategory);
   dataSource = new  MatTreeNestedDataSource<CategoryResponseDto>();
@@ -47,6 +50,11 @@ export class CategoriesTreeViewComponent implements OnInit {
   //     this.toastr.error('The categori has not been deleted. Error: ' + error);
   //   });
   // }
+
+  checkNodeId(node: any): void{
+    this.categoryChangeEvent.emit(node.id);
+    console.log(node);
+  }
 
   showCategoryDeleteDialog(id: number): void {
       const deleteDialogReference = this.deleteDialog.open(CategoryDeleteDialogComponent, {data: {categoryId: id}});
@@ -120,4 +128,7 @@ export class CategoryUpdateDialogComponent implements OnInit {
     this.updateDialog.close();
     console.log(' "NO" button was presed');
   }
+
+
+
 }

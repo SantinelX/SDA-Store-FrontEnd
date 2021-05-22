@@ -1,7 +1,7 @@
 <mat-tree [dataSource] = "dataSource" [treeControl] = "treeControl" class="category-tree-view">
   <mat-tree-node *matTreeNodeDef="let node">
     <button mat-button disabled="true"></button>
-    {{node.name}}
+    <p (click)="checkNodeId(node)" style="margin: 0px">{{node.name}}</p>
     <button mat-icon-button>
       <mat-icon>
         add
@@ -26,7 +26,7 @@
             {{!treeControl.isExpanded(node) ? 'chevron_right' : 'expand_more'}}
           </mat-icon>
         </button>
-        {{node.name}}
+        <p (click)="checkNodeId(node)" style="margin: 0px">{{node.name}}</p>
         <button mat-icon-button>
           <mat-icon>
             add

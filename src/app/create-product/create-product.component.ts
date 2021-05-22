@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductRequestDto, ProductType} from '../model/product-model';
 import {ProductService} from '../product.service';
 import {ToastrService} from 'ngx-toastr';
+import {Category, CategoryRequestDto, CategoryResponseDto} from '../model/category-model';
+import {ProductRequestDto, ProductResponseDto} from '../model/product-model';
+import {CategoryService} from '../category.service';
 
 
 @Component({
@@ -10,23 +12,28 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
+  categorys: CategoryResponseDto[] = [];
+  productType: string[] = ['IT' , 'APPLIANCES'];
+  product: ProductRequestDto = { } as ProductRequestDto;
 
-  // productRequestDto: ProductRequestDto ={
-  //
-  // }
 
 
-  constructor(private productService: ProductService, private toastr: ToastrService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.categoryService.findAll().subscribe((data: CategoryResponseDto[]) => {
+      this.categorys = data;
+    }, error => {
+      console.log(error);
+    });
   }
 
-  // saveProduct(): void {
-  //   this.productService.createProduct(this.productRequestDto).subscribe((response) => {
-  //     this.toastr.success('Item saved succesfuly.');
-  //   }, errorMsg => {
-  //     this.toastr.error('Something went Wrong. Product not saved !!! [' + errorMsg + ']');
-  //   });
-  // }
+  saveProduct(): void {
+    this.productService.createProduct(this.product).subscribe((response: ProductResponseDto) => {
+      this.toastr.success('Product created succesfuly.');
+    }, errorMsg => {
+      this.toastr.error('Something went Wrong. Product not saved !!! [' + errorMsg + ']');
+    });
+  }
 
 }

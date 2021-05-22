@@ -7,6 +7,7 @@ import {RouteGuardService} from './route-guard.service';
 import {CreateCategoryComponent} from './create-category/create-category.component';
 import {CategoriesTreeViewComponent} from './categories-tree-view/categories-tree-view.component';
 import {CreateProductComponent} from './create-product/create-product.component';
+import {ProductTableViewComponent} from './product-table-view/product-table-view.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent, canActivate: [RouteGuardService]},
   {path: 'categories', component: CreateCategoryComponent},
   {path: 'categories-tree-view', component: CategoriesTreeViewComponent},
-  {path: 'create-product', component: CreateProductComponent}
+  {path: 'create-product', component: CreateProductComponent},
+  {path: 'product-table-view', component: ProductTableViewComponent},
+  {path: 'create-category', component: CreateCategoryComponent}
 ];
 
 @NgModule({

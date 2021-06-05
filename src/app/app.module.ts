@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MatOptionModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
@@ -30,6 +30,11 @@ import { ProductTableViewComponent } from './product-table-view/product-table-vi
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ProductCardViewComponent } from './product-card-view/product-card-view.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import {AuthInterceptorService} from './auth-interceptor.service';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 
 
@@ -45,7 +50,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     CategoryDeleteDialogComponent,
     CategoryUpdateDialogComponent,
     CreateProductComponent,
-    ProductTableViewComponent
+    ProductTableViewComponent,
+    ProductCardViewComponent,
+    ShoppingCartComponent,
+    OrderPageComponent
 
   ],
   imports: [
@@ -67,8 +75,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    MatBadgeModule
+
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]})
 export class AppModule { }

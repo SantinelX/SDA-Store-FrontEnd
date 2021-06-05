@@ -1,3 +1,5 @@
+
+<app-nav-bar></app-nav-bar>
 <div>
   <mat-card style="background-color: darkslateblue">
     <mat-card-title>Create Product</mat-card-title>
@@ -5,7 +7,7 @@
     <form>
       <mat-form-field>
         <mat-label>Product Title</mat-label>
-        <input matInput [(ngModel)]="product.productName" name="product_title">
+        <input matInput [(ngModel)]="product.name" name="product_title">
       </mat-form-field>
       <mat-grid-list cols="2" rowHeight="2:1">
         <mat-grid-tile>
@@ -28,9 +30,18 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Product Type</mat-label>
-        <mat-select name = "productType" >
-          <mat-option *ngFor="let productType of productType" value="{{productType}}">{{productType}}</mat-option>
+        <mat-select name = "productType" [(ngModel)]="product.productType">
+          <mat-option *ngFor="let productType of productTypes" value="{{productType}}">{{productType}}</mat-option>
         </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Product Price</mat-label>
+        <input matInput [(ngModel)]="product.price" name="product_title">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Product Stock</mat-label>
+        <input matInput [(ngModel)]="product.stock" name="product_title">
       </mat-form-field>
       <br>
       <button mat-raised-button (click)="saveProduct()">Create Product</button>

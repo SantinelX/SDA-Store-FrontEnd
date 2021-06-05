@@ -8,6 +8,9 @@ import {CreateCategoryComponent} from './create-category/create-category.compone
 import {CategoriesTreeViewComponent} from './categories-tree-view/categories-tree-view.component';
 import {CreateProductComponent} from './create-product/create-product.component';
 import {ProductTableViewComponent} from './product-table-view/product-table-view.component';
+import {ProductCardViewComponent} from './product-card-view/product-card-view.component';
+import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
+import {OrderPageComponent} from './order-page/order-page.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path: 'categories-tree-view', component: CategoriesTreeViewComponent},
   {path: 'create-product', component: CreateProductComponent},
   {path: 'product-table-view', component: ProductTableViewComponent},
-  {path: 'create-category', component: CreateCategoryComponent}
+  {path: 'create-category', component: CreateCategoryComponent},
+  {path: 'product-card-view', component: ProductCardViewComponent},
+  {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'my-orders', component: OrderPageComponent}
 ];
 
 @NgModule({

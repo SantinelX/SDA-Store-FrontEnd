@@ -1,0 +1,53 @@
+<app-nav-bar [numberOfProductsInCart]="totalNumberOfElementsInCart" (searchChangeEvent)="filterProducts($event)"></app-nav-bar>
+<div class="filter-wraper">
+  <app-categories-tree-view (categoryChangeEvent)="filterProductsByCategory($event)"></app-categories-tree-view>
+  <mat-form-field>
+    <mat-label>
+     Low price
+    </mat-label>
+    <input matInput name="low-price-filter" type="number" (keyup)="changeLowPrice($event)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>
+      High price
+    </mat-label>
+    <input matInput name="high-price-filter" type="number" (keyup)="changeHighPrice($event)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>
+      Product Type
+    </mat-label>
+    <mat-select name="product-type" (selectionChange)="changeProductType($event)">
+      <mat-option *ngFor="let type of productTypes" value="{{type}}">{{type}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class = "product-wraper">
+  <div class="product-list">
+    <mat-card class="product_card" *ngFor="let product of products">
+      <mat-card-header>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
+      </mat-card-header>
+      <img  mat-card-image src="https://media.telekom.ro/images/lp/tv-net-voce/tv_banner.png"/>
+      <mat-card-content>
+        <p class="paragraph_description">
+          {{product.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button disabled>{{product.price}} Ron</button>
+        <button mat-button (click)="addProductToCart(product.id)" [disabled]="product.stock === 0 ? true : null"> Add to Cart </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="paginator">
+    <mat-paginator [length]="totalNumberOfElements" [pageSizeOptions]="[5,10]" (page)="changePage($event)"></mat-paginator>
+  </div>
+</div>
+
+
+

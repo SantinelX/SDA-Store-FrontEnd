@@ -10,7 +10,7 @@ export interface UserDto {
   lastName: string;
   messagingChannel: string;
   role: string;
-  address: AddressDto;
+  addressDto: AddressDto;
 }
 
 export interface AddressDto {

@@ -11,6 +11,8 @@ export class RouteGuardService implements CanActivate{
   constructor(private router: Router) { }
 
 
+
+  // tslint:disable-next-line:max-line-length
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const loggedUser = localStorage.getItem(AppConfig.AUTHORISATION_HEADER);
     if (loggedUser !== null){

@@ -1,4 +1,5 @@
 .navbar {
+  min-height: 100px;
   justify-content: space-between;
 }
 

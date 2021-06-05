@@ -1,0 +1,37 @@
+
+<app-nav-bar></app-nav-bar>
+
+<div style="background-color: #3f51b5">
+  <h1 align="center" > Your Shopping Cart</h1>
+  <mat-card class="total-wraper">
+    Total
+    <button (click)="makeOrder()">Place Order</button>
+  </mat-card>
+  <mat-card class="product_card" *ngFor="let product of products">
+    <img class="product-img-wrapper" src="https://media.telekom.ro/images/lp/tv-net-voce/tv_banner.png"/>
+    <mat-card-title class="product-title">{{product.name}}</mat-card-title>
+    <mat-card-subtitle class="product-description">Product Description:</mat-card-subtitle>
+    <p class="description">
+      {{product.description}}
+    </p>
+    <mat-select (selectionChange)="changeQuantity($event,product.id)" name  = "quantityDropdown">
+      <mat-option value="1">1</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+      <mat-option value="4">4</mat-option>
+      <mat-option value="5">5</mat-option>
+    </mat-select>
+    <label style="font-weight: bolder"> buc.</label>
+    <mat-card-subtitle class="product-price">
+      {{product.price}}
+    </mat-card-subtitle>
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+

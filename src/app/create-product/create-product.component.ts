@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../product.service';
 import {ToastrService} from 'ngx-toastr';
-import {Category, CategoryRequestDto, CategoryResponseDto} from '../model/category-model';
+import {CategoryResponseDto} from '../model/category-model';
 import {ProductRequestDto, ProductResponseDto} from '../model/product-model';
 import {CategoryService} from '../category.service';
 
@@ -12,8 +12,11 @@ import {CategoryService} from '../category.service';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
+
+  imageUrl = 'http://localhost:4200/assets/img/SDA%20Store%20Logo.png';
+
   categorys: CategoryResponseDto[] = [];
-  productType: string[] = ['IT' , 'APPLIANCES'];
+  productTypes: string[] = [];
   product: ProductRequestDto = { } as ProductRequestDto;
 
 
@@ -23,8 +26,12 @@ export class CreateProductComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.findAll().subscribe((data: CategoryResponseDto[]) => {
       this.categorys = data;
+
     }, error => {
       console.log(error);
+    });
+    this.productService.getProductTypes().subscribe((data: string[]) => {
+      this.productTypes = data;
     });
   }
 
@@ -34,6 +41,10 @@ export class CreateProductComponent implements OnInit {
     }, errorMsg => {
       this.toastr.error('Something went Wrong. Product not saved !!! [' + errorMsg + ']');
     });
+  }
+
+  changeImage(event: any): void{
+    this.imageUrl = event.target.value;
   }
 
 }

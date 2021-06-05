@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.authService.doAut(this.email, this.password).subscribe((data) => {
+      localStorage.setItem('ROLE', data.authorities[0].authority);
       this.router.navigate(['/products']);
       console.log(data);
     }, errorMessage => {

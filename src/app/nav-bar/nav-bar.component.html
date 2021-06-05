@@ -7,33 +7,36 @@
     </div>
   </div>
   <div style="max-width: 50%; margin:auto;" class="mat-tab-nav-bar">
-    <a mat-button routerLink="#">Home</a>
-    <a mat-button routerLink="#">My Orders</a>
+    <a mat-button routerLink="/product-card-view">Home</a>
+    <a mat-button routerLink="/my-orders">My Orders</a>
+    <a mat-button routerLink="/create-product">Create Product</a>
+    <a mat-button routerLink="/create-category">Create Category</a>
     <a mat-button routerLink="#">Contact</a>
   </div>
   <div style="width: 300px; max-height: 60px; align-content: center">
     <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Search</mat-label>
-        <input matInput placeholder="" value="">
+        <input matInput (keyup)="searchProduct($event)" type="text">
       </mat-form-field>
     </form>
   </div>
   <div>
-    <a mat-button routerLink="#">
-      <mat-icon>
+    <a mat-button (click)="goToShoppingCart()">
+      <mat-icon matBadge = "{{numberOfProductsInCart}}" matBadgeColor="warn">
         <span class="material-icons">
          add_shopping_cart
         </span>
       </mat-icon>
     </a>
     <a mat-button routerLink="#">
-      <mat-icon>
+      <mat-icon >
         <span class="material-icons">
          manage_accounts
         </span>
       </mat-icon>
     </a>
-    <a mat-raised-button color="accent" routerLink="/login">Log Out</a>
+    <a mat-raised-button color="primary" routerLink="/login">LogIn</a>
+    <a mat-raised-button color="accent" (click)="logOut()">LogOut</a>
   </div>
 </mat-toolbar>

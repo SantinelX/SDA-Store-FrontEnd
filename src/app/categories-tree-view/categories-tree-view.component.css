@@ -6,3 +6,20 @@
 .category-tree-view.ul {
   list-style-type: none;
 }
+
+.category-element{
+  display: inline;
+}
+
+.category-tree-view ul {
+  margin: 0px;
+}
+
+.category-item {
+  display: inline;
+}
+
+.icon-wrapper{
+  font-size: 18px;
+  padding: 1px;
+}

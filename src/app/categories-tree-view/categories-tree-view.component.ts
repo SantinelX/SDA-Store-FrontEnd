@@ -18,6 +18,7 @@ export class CategoriesTreeViewComponent implements OnInit {
 
   treeControl = new NestedTreeControl<CategoryResponseDto>(category => category.subCategory);
   dataSource = new  MatTreeNestedDataSource<CategoryResponseDto>();
+  role = localStorage.getItem('ROLE');
 
 
   constructor(private categoryService: CategoryService,

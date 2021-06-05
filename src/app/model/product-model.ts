@@ -1,20 +1,21 @@
 import {UserDto} from './user-models';
-import {CategoryRequestDto, CategoryResponseDto} from './category-model';
+
 
 export interface ProductRequestDto {
   id: number | null;
-  productName: string;
+  name: string;
   description: string;
   thumbnail: string;
   categoryId: number;
   price: number;
   productType: string;
   userAuthor: string;
+  stock: number;
 }
 
 export interface ProductResponseDto {
   id: number;
-  productName: string;
+  name: string;
   description: string;
   thumbnail: string;
   categoryId: string;
@@ -22,15 +23,12 @@ export interface ProductResponseDto {
   price: number;
   productType: string;
   userAuthor: UserDto;
+  stock: number;
 }
 
 export interface ProductType {
   id: number;
   name: string;
-}
-
-export enum ProductTyp{
-  PRODUCT, ACCESORIES
 }
 
 export interface PaginatedProductResponse{
@@ -41,7 +39,13 @@ export interface PaginatedProductResponse{
 export interface ProductFilters {
   name?: string | undefined;
   productType?: string | undefined;
-  lowPrice?: string | undefined;
-  highPrice?: string | undefined;
+  lowPrice?: number | undefined;
+  highPrice?: number | undefined;
   categoryId?: string | undefined;
+}
+
+
+export interface ProductOrderLine {
+  productId: number;
+  quantity: number;
 }

@@ -1,0 +1,16 @@
+.product_card{
+  max-width: 200px;
+  min-height: 400px;
+  float: left;
+  margin: 10px;
+}
+
+.paragraph_description{
+  min-height: 100px;
+}
+.product-list{
+  overflow: auto;
+}
+.filter-wraper {
+  float: left;
+}

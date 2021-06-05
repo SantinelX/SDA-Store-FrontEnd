@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   notificationOption: string[] = ['MAIL', 'EMAIL'];
   address: AddressDto = {} as AddressDto;
   user: UserDto = {
-    address: this.address
+    addressDto: this.address
   } as UserDto;
 
   constructor(private userService: UserService,
@@ -30,15 +30,17 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-register(): void {
-    this.userService.register(this.user).subscribe((data: UserDto) => {
-      this.router.navigate(['/login']);
-      console.log('Success', data);
-    }, errorMessage => {
-      this.toastr.error('User already exists');
-      console.log('error', errorMessage);
-    });
-}
+  register(): void {
+      this.userService.register(this.user).subscribe((data ) => {
+        this.router.navigate(['/login']);
+        console.log('Success', data);
+      }, errorMessage => {
+        this.toastr.error('User already exists');
+        console.log('error', errorMessage);
+      });
+  }
+
+
 
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {RequestUserDto} from './register/register.component';
 import {Observable} from 'rxjs';
+import {UserDto} from './model/user-models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class RegistrationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  create(requestUserDto: RequestUserDto): Observable<any> {
-    return this.httpClient.post<RequestUserDto>(this.API_PATH, requestUserDto);
+  create(requestUserDto: UserDto): Observable<any> {
+    return this.httpClient.post<UserDto>(this.API_PATH, requestUserDto);
   }
 }

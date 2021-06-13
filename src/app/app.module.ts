@@ -20,7 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import {
-  CategoriesTreeViewComponent,
+  CategoriesTreeViewComponent, CategoryAddDialogComponent,
   CategoryDeleteDialogComponent, CategoryUpdateDialogComponent
 } from './categories-tree-view/categories-tree-view.component';
 import {MatTreeModule, MatTreeNode} from '@angular/material/tree';
@@ -47,6 +47,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
     NavBarComponent,
     CreateCategoryComponent,
     CategoriesTreeViewComponent,
+    CategoryAddDialogComponent,
     CategoryDeleteDialogComponent,
     CategoryUpdateDialogComponent,
     CreateProductComponent,

@@ -2,24 +2,23 @@
   display: none;
 }
 
-.category-tree-view li,
-.category-tree-view.ul {
-  list-style-type: none;
+.mat-icon-button{
+  width: 20px;
 }
 
-.category-element{
-  display: inline;
-}
-
-.category-tree-view ul {
-  margin: 0px;
-}
-
-.category-item {
-  display: inline;
-}
-
-.icon-wrapper{
+.add-icon-wrapper{
   font-size: 18px;
-  padding: 1px;
+  color: green;
 }
+
+.edit-icon-wrapper{
+  font-size: 18px;
+  color: #3f51b5;
+}
+
+.delete-icon-wrapper{
+  font-size: 18px;
+  color: crimson;
+}
+
+

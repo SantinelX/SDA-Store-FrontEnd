@@ -1,11 +1,12 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {CategoryService} from '../category.service';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {CategoryResponseDto} from '../model/category-model';
+import {CategoryRequestDto, CategoryResponseDto} from '../model/category-model';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {any} from 'codelyzer/util/function';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-categories-tree-view',
@@ -22,7 +23,9 @@ export class CategoriesTreeViewComponent implements OnInit {
 
 
   constructor(private categoryService: CategoryService,
+              private router: Router,
               private toastr: ToastrService,
+              public addDialog: MatDialog,
               public deleteDialog: MatDialog,
               public updateDialog: MatDialog) { }
 
@@ -69,6 +72,10 @@ export class CategoriesTreeViewComponent implements OnInit {
     updateDialogReference.afterClosed().subscribe(data => {
       this.getAllRootCategories();
     });
+  }
+
+  showAddCategoryDialog(): void {
+   this.addDialog.open(CategoryAddDialogComponent);
   }
 }
 
@@ -122,6 +129,8 @@ export class CategoryUpdateDialogComponent implements OnInit {
     this.categoryService.update(this.data.categoryId, this.data.name).subscribe((data) => {
       this.toastr.success('The category has been updated.');
       this.updateDialog.close();
+    }, error => {
+      this.toastr.error('Category exists in datatbase !!!');
     });
   }
 
@@ -129,7 +138,46 @@ export class CategoryUpdateDialogComponent implements OnInit {
     this.updateDialog.close();
     console.log(' "NO" button was presed');
   }
+}
 
+@Component({
+  selector: 'app-category-add-dialog',
+  templateUrl: 'category-add-dialog.html'
+})
 
+export class CategoryAddDialogComponent implements OnInit {
 
+  categoryResponseDto: CategoryResponseDto[] = [];
+  categoryRequestDto: CategoryRequestDto = {
+    name: '',
+    parentId: null
+  };
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public addDialog: MatDialogRef<CategoriesTreeViewComponent>,
+              private categoryService: CategoryService, private toastr: ToastrService) {
+  }
+
+  ngOnInit(): void {
+    this.categoryService.findAll().subscribe((categoryArray) => {
+      this.categoryResponseDto = categoryArray;
+    }, errorMsg => {
+      console.log(errorMsg);
+    });
+  }
+
+  handleAddCategory(): void {
+    this.categoryService.create(this.categoryRequestDto).subscribe( (response) => {
+      this.toastr.success('The new category was added succesfuly.');
+      this.ngOnInit();
+      this.addDialog.close();
+    }, errorMsg => {
+      this.toastr.error('Category not saved !!! Error: ' + errorMsg);
+      console.error(errorMsg);
+    });
+  }
+
+  handleClose(): void {
+    this.addDialog.close();
+    console.log(' "NO" button was presed');
+  }
 }

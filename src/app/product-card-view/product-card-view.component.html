@@ -1,5 +1,8 @@
-<app-nav-bar [numberOfProductsInCart]="totalNumberOfElementsInCart" (searchChangeEvent)="filterProducts($event)"></app-nav-bar>
-<div class="filter-wraper">
+
+<div class="page-wraper">
+  <app-nav-bar [numberOfProductsInCart]="totalNumberOfElementsInCart" (searchChangeEvent)="filterProducts($event)"></app-nav-bar>
+<div class="filter-wraper" id="filter">
+  <h1>Filter Products</h1>
   <app-categories-tree-view (categoryChangeEvent)="filterProductsByCategory($event)"></app-categories-tree-view>
   <mat-form-field>
     <mat-label>
@@ -29,7 +32,7 @@
   <div class="product-list">
     <mat-card class="product_card" *ngFor="let product of products">
       <mat-card-header>
-        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-title>{{product.product_name}}</mat-card-title>
         <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
       </mat-card-header>
       <img  mat-card-image src="https://media.telekom.ro/images/lp/tv-net-voce/tv_banner.png"/>
@@ -48,6 +51,6 @@
     <mat-paginator [length]="totalNumberOfElements" [pageSizeOptions]="[5,10]" (page)="changePage($event)"></mat-paginator>
   </div>
 </div>
-
+</div>
 
 

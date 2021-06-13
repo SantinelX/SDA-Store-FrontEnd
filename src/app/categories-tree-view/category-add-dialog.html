@@ -1,4 +1,3 @@
-
 <form class="category-creation-form">
   <mat-form-field>
     <mat-label>
@@ -9,11 +8,11 @@
   <mat-form-field>
     <mat-label>Parent category:</mat-label>
     <mat-select name="categoryParent" [(ngModel)]="categoryRequestDto.parentId">
-      <mat-option *ngFor="let category of categoryResponsDto" value="{{category.id}}">
+      <mat-option *ngFor="let category of categoryResponseDto" value="{{category.id}}">
         {{category.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button (click)="save()" name="save-category">Save Category</button>
-  <button mat-raised-button  name="save-category">Save Category</button>
+  <button mat-raised-button (click)="handleAddCategory()" name="save-category">Create Category</button>
+  <button mat-raised-button (click)="handleClose()" name="save-category">Cancel</button>
 </form>

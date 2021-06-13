@@ -3,7 +3,7 @@ import {UserDto} from './user-models';
 
 export interface ProductRequestDto {
   id: number | null;
-  name: string;
+  product_name: string;
   description: string;
   thumbnail: string;
   categoryId: number;
@@ -15,7 +15,7 @@ export interface ProductRequestDto {
 
 export interface ProductResponseDto {
   id: number;
-  name: string;
+  product_name: string;
   description: string;
   thumbnail: string;
   categoryId: string;

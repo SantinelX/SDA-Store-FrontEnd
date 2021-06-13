@@ -11,7 +11,8 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
 })
 export class ProductTableViewComponent implements OnInit {
 
-  columns = ['productId', 'productName', 'productPrice', 'productCategory', 'productActions' ];
+  columns = ['productId', 'productName', 'productCategory', 'productPrice',  'productActions' ];
+  products: ProductResponseDto[] = [];
   dataSource = new MatTableDataSource<ProductResponseDto>();
   totalNumberOfElements = 0;
   productFilters: ProductFilters = {};

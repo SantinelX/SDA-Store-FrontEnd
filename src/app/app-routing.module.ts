@@ -11,11 +11,13 @@ import {ProductTableViewComponent} from './product-table-view/product-table-view
 import {ProductCardViewComponent} from './product-card-view/product-card-view.component';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {OrderPageComponent} from './order-page/order-page.component';
+import {TestCompComponent} from './test-comp/test-comp.component';
+import {NavBarComponent} from './nav-bar/nav-bar.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'products', component: ProductsComponent, canActivate: [RouteGuardService]},
+  {path: 'products', component: ProductsComponent},
   {path: 'categories', component: CreateCategoryComponent},
   {path: 'categories-tree-view', component: CategoriesTreeViewComponent},
   {path: 'create-product', component: CreateProductComponent},
@@ -23,7 +25,10 @@ const routes: Routes = [
   {path: 'create-category', component: CreateCategoryComponent},
   {path: 'product-card-view', component: ProductCardViewComponent},
   {path: 'shopping-cart', component: ShoppingCartComponent},
-  {path: 'my-orders', component: OrderPageComponent}
+  {path: 'my-orders', component: OrderPageComponent},
+  {path: 'test', component: TestCompComponent},
+  {path: 'navbar', component: NavBarComponent}
+
 ];
 
 @NgModule({

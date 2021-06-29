@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Role, UserDto} from './model/user-models';
 import {AppConfig} from './config/app-config';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,4 +18,8 @@ export class UserService {
   register(userDto: UserDto): Observable<UserDto>{
     return this.httpClient.post<UserDto>(AppConfig.API_PATH + '/register', userDto);
   }
+
+  getUserById(userId: number): Observable<UserDto> {
+    return this.httpClient.get<UserDto>(AppConfig.API_PATH + '/user/' + userId);
+}
 }

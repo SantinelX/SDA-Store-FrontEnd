@@ -1,41 +1,127 @@
+main {
+  margin: 0px;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 5%;
+  position: absolute;
+  top: 5px;
+  left: 3%;
+}
+
+.logo-img{
+  width: 120px;
+  height: 107%;
+  alignment: left;
+}
+
 .navbar {
-  min-height: 100px;
-  justify-content: space-between;
+  height: 5%;
 }
 
-span {
-  padding-right: 2rem;
-}
-a {
-  font-size: 24px;
+.nav-and-search{
+width: 60%;
 }
 
-.material-icons-outlined {
-  font-size: 29px;
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.text-logo {
-  font-size: 35px;
+.search-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.search{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+input[type=text]{
+  border-radius: 2rem;
+  border-color: #3f51b5;
+  width: 100%;
+  color: #3f51b5;
   font-weight: bold;
-  font-family: "Monotype Corsiva", monospace;
-  alignment: left;
+  text-align: center;
+  -webkit-transition: 1s ease-in-out;
+
 }
-.material-icons {
-  font-size: 30px;
+
+textarea:focus, input:focus {
+  outline: none;
+  border-color: red;
 }
-.logo{
-  width: 90px;
-  height: 60px;
-  alignment: left;
+
+a {
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0000ff;
 }
-.search-input{
+
+.icons {
+  width: 5%;
+
+}
+.log-in {
+  margin-left: 100px;
+}
+
+.login-label{
+  color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 20px;
 }
 
-.search-label{
+.login-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: blue;
+  width: 30px;
+  height: 30px;
+}
+
+.log-out {
+  margin-left: 100px;
+}
+
+.logout-label{
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 20px;
 }
 
-.search-icon {
-  font-size: 10px;
+.logout-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: red;
+  width: 30px;
+  height: 30px;
 }
+
+.welcomme {
+  color: blue;
+  font-size: 18px;
+
+}
+
+

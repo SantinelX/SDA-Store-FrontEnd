@@ -1,42 +1,76 @@
-<mat-toolbar color="primary" class="navbar">
+<main class="navbar">
   <div class="logo">
-    <div class="navbar-brand">
       <a class="navbar-item">
-        <img class ="logo" src="assets/img/SDA%20Store%20Logo.png" alt="">
+        <img class ="logo-img" src="assets/img/SDA%20Store%20Logo.png" alt="">
+      </a>
+  </div>
+  <div class="nav-and-search">
+    <div class="navigation">
+      <a mat-button routerLink="/products">Home</a>
+      <a mat-button routerLink="/my-orders">My Orders</a>
+      <a mat-button routerLink="/create-product">Create Product</a>
+      <a mat-button routerLink="/create-category">Create Category</a>
+      <a mat-button routerLink="#">Contact</a>
+    </div>
+
+  <!--  // Search bar-->
+    <div class="search-bar">
+          <input class="search"(keyup)="searchProduct($event)" type="text" >
+    </div>
+  </div>
+
+<!--  //Shopping Cart and Manage Acount-->
+  <div class="ADMIN" *ngIf="role === 'CUSTOMER'">
+    <div class="icons" >
+      <a mat-button (click)="goToShoppingCart()">
+        <mat-icon *ngIf="numberOfProductsInCart === 0; else shoppingcontent">
+          <span class="material-icons">
+           add_shopping_cart
+          </span>
+        </mat-icon>
+      </a>
+        <ng-template #shoppingcontent>
+          <mat-icon matBadge = "{{numberOfProductsInCart}}" matBadgeColor="warn">
+          <span class="material-icons">
+           add_shopping_cart
+          </span>
+          </mat-icon>
+        </ng-template>
+
+      <a mat-button routerLink="#">
+        <mat-icon >
+          <span class="material-icons">
+           manage_accounts
+          </span>
+        </mat-icon>
       </a>
     </div>
   </div>
-  <div style="max-width: 50%; margin:auto;" class="mat-tab-nav-bar">
-    <a mat-button routerLink="/product-card-view">Home</a>
-    <a mat-button routerLink="/my-orders">My Orders</a>
-    <a mat-button routerLink="/create-product">Create Product</a>
-    <a mat-button routerLink="/create-category">Create Category</a>
-    <a mat-button routerLink="#">Contact</a>
+
+<!--  //Login area  -->
+<!--  //LogedIn  -->
+  <div class="ADMIN" *ngIf="role === 'CUSTOMER' || role === 'ADMINISTRATOR'; else content">
+    <div class="log-in">
+      <!-- TODO De facut sa apara numele userului Logat -->
+      <p class="welcomme" >Welcomme {{userName}}</p>
+      <a mat-button (click)="logOut()">
+        <label class="logout-label">LogOut</label>
+      </a>
+    </div>
   </div>
-  <div style="width: 300px; max-height: 60px; align-content: center">
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Search</mat-label>
-        <input matInput (keyup)="searchProduct($event)" type="text">
-      </mat-form-field>
-    </form>
-  </div>
-  <div>
-    <a mat-button (click)="goToShoppingCart()">
-      <mat-icon matBadge = "{{numberOfProductsInCart}}" matBadgeColor="warn">
-        <span class="material-icons">
-         add_shopping_cart
-        </span>
-      </mat-icon>
-    </a>
-    <a mat-button routerLink="#">
-      <mat-icon >
-        <span class="material-icons">
-         manage_accounts
-        </span>
-      </mat-icon>
-    </a>
-    <a mat-raised-button color="primary" routerLink="/login">LogIn</a>
-    <a mat-raised-button color="accent" (click)="logOut()">LogOut</a>
-  </div>
-</mat-toolbar>
+  <!--  // LogedOut-->
+  <ng-template #content>
+    <div class="log-out">
+      <a mat-button routerLink="/login">
+        <label class="login-label">Login</label>
+        <mat-icon>
+          <span class="login-icon">
+          account_box
+          </span>
+        </mat-icon>
+      </a>
+    </div>
+  </ng-template>
+
+</main>
+<hr>

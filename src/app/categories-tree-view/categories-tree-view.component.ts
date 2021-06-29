@@ -5,7 +5,6 @@ import {CategoryRequestDto, CategoryResponseDto} from '../model/category-model';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {any} from 'codelyzer/util/function';
 import {Router} from '@angular/router';
 
 @Component({

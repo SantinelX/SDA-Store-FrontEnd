@@ -1,6 +1,6 @@
 .product_card{
   max-width: 200px;
-  min-height: 400px;
+  max-height: 400px;
   float: left;
   margin: 10px;
 }
@@ -9,8 +9,39 @@
   min-height: 100px;
 }
 .product-list{
-  overflow: auto;
+  margin-left: 30%;
+
 }
+
+.product-wraper{
+
+}ng
 .filter-wraper {
   float: left;
+}
+
+mat-label{
+  color: #3f51b5;
+}
+
+input {
+  color: #3f51b5;
+}
+
+mat-select {
+  color: #3f51b5 !important;
+}
+
+mat-option {
+  color: #3f51b5 !important;
+}
+
+mat-paginator{
+  color: #3f51b5;
+  font-weight: bold;
+  align-content: center;
+  min-width: 100%;
+}
+element.style{
+  justify-content: center;
 }

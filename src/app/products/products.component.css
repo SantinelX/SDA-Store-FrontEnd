@@ -1,0 +1,55 @@
+* {
+  margin: 0px;
+}
+
+.page-wrapper{
+  /*display: grid;*/
+
+
+}
+.filter-wrapper {
+  background-color: yellow;
+  pos: 0%;
+  max-width: 12%;
+  min-width: 100px;
+  float: left;
+  margin-top: 5px;
+  /*margin-left: 10px;*/
+  /*margin-right: 10px;*/
+}
+.product-display-wrapper{
+  background-color: red;
+
+  float: left;
+  margin-left: 50px;
+  width: 80%;
+
+}
+.product-list{
+  background-color: red;
+        display: block;
+}
+.product_card{
+  min-width: 170px;
+  max-width: 170px;
+  min-height: 300px;
+  max-height: 400px;
+  float: left;
+  margin: 5px;
+}
+
+paginator{
+  overflow: auto;
+ }
+
+mat-label{
+  color: #3f51b5;
+}
+input {
+  color: #3f51b5;
+}
+  div.mat-paginator-container{
+    /*position: absolute;*/
+    /*top:800px;*/
+  }
+

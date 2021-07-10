@@ -1,53 +1,55 @@
-<mat-tree [dataSource] = "dataSource" [treeControl] = "treeControl" class="category-tree-view">
-  <mat-tree-node *matTreeNodeDef="let node" >
-<!--    <button mat-icon-button disabled="true"></button>-->
-    <p class = "category-item"(click)="checkNodeId(node)" style="margin: 0px">{{node.name}}</p>
-    <div class="ADMIN" *ngIf="role === 'ADMINISTRATOR'">
-      <button mat-icon-button>
-        <mat-icon class="add-icon-wrapper" (click)="showAddCategoryDialog()">
-          add
-        </mat-icon >
-      </button>
-      <button mat-icon-button (click)="showCategoryUpdateDialog(node.id)">
-        <mat-icon class="edit-icon-wrapper">
-          edit_note
-        </mat-icon>
-      </button>
-      <button mat-icon-button (click)="showCategoryDeleteDialog(node.id)">
-        <mat-icon class="delete-icon-wrapper">
-          delete
-        </mat-icon>
-      </button>
-    </div>
-  </mat-tree-node>
 
-  <mat-nested-tree-node  *matTreeNodeDef="let node; when: hasSubcategories" matTreeNodePadding>
-    <div class="main-category-item">
-      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
-        <mat-icon class ="mat-icon-rtl-mirror">
-          {{!treeControl.isExpanded(node) ? 'chevron_right' : 'expand_more'}}
-        </mat-icon>
-      </button>
-        {{node.name}}
-      <button mat-icon-button (click)="showAddCategoryDialog()" *ngIf="role === 'ADMINISTRATOR'">
-        <mat-icon class="add-icon-wrapper" >
-          add
-        </mat-icon>
-      </button>
-      <button mat-icon-button (click)="showCategoryUpdateDialog(node.id)" class="ADMIN" *ngIf="role === 'ADMINISTRATOR'">
-        <mat-icon class="edit-icon-wrapper">
-          edit_note
-        </mat-icon>
-      </button>
-      <button mat-icon-button (click)="showCategoryDeleteDialog(node.id)" class="ADMIN" *ngIf="role === 'ADMINISTRATOR'">
-        <mat-icon class="delete-icon-wrapper">
-          delete
-        </mat-icon>
-      </button>
-    </div>
-    <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
-    <ng-container matTreeNodeOutlet></ng-container>
-  </ul>
+  <mat-tree [dataSource] = "dataSource" [treeControl] = "treeControl" class="category-tree-view">
+    <mat-tree-node *matTreeNodeDef="let node" >
+  <!--    <button mat-icon-button disabled="true"></button>-->
+      <p class = "category-item"(click)="checkNodeId(node)" style="margin: 0px">{{node.name}}</p>
+      <div class="ADMIN" *ngIf="role === 'ADMINISTRATOR'">
+        <button mat-icon-button>
+          <mat-icon class="add-icon-wrapper" (click)="showAddCategoryDialog()">
+            add
+          </mat-icon >
+        </button>
+        <button mat-icon-button (click)="showCategoryUpdateDialog(node.id)">
+          <mat-icon class="edit-icon-wrapper">
+            edit_note
+          </mat-icon>
+        </button>
+        <button mat-icon-button (click)="showCategoryDeleteDialog(node.id)">
+          <mat-icon class="delete-icon-wrapper">
+            delete
+          </mat-icon>
+        </button>
+      </div>
+    </mat-tree-node>
 
-  </mat-nested-tree-node>
-</mat-tree>
+    <mat-nested-tree-node  *matTreeNodeDef="let node; when: hasSubcategories" matTreeNodePadding>
+      <div class="main-category-item">
+        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+          <mat-icon class ="mat-icon-rtl-mirror">
+            {{!treeControl.isExpanded(node) ? 'chevron_right' : 'expand_more'}}
+          </mat-icon>
+        </button>
+          {{node.name}}
+        <button mat-icon-button (click)="showAddCategoryDialog()" *ngIf="role === 'ADMINISTRATOR'">
+          <mat-icon class="add-icon-wrapper" >
+            add
+          </mat-icon>
+        </button>
+        <button mat-icon-button (click)="showCategoryUpdateDialog(node.id)" class="ADMIN" *ngIf="role === 'ADMINISTRATOR'">
+          <mat-icon class="edit-icon-wrapper">
+            edit_note
+          </mat-icon>
+        </button>
+        <button mat-icon-button (click)="showCategoryDeleteDialog(node.id)" class="ADMIN" *ngIf="role === 'ADMINISTRATOR'">
+          <mat-icon class="delete-icon-wrapper">
+            delete
+          </mat-icon>
+        </button>
+      </div>
+      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+      <ng-container matTreeNodeOutlet></ng-container>
+    </ul>
+
+    </mat-nested-tree-node>
+  </mat-tree>
+

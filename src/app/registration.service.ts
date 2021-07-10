@@ -8,7 +8,7 @@ import {UserDto} from './model/user-models';
 })
 export class RegistrationService {
   API_PATH = 'http://localhost:8080/register';
-
+  API_PATH2 = 'http://localhost:8080/update/{id}';
   constructor(private httpClient: HttpClient) { }
 
   create(requestUserDto: UserDto): Observable<any> {

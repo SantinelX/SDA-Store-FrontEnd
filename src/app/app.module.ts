@@ -36,7 +36,8 @@ import {AuthInterceptorService} from './auth-interceptor.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { TestCompComponent } from './test-comp/test-comp.component';
-import {OKTA_CONFIG, OktaAuthModule} from '@okta/okta-angular';
+import { UserConfigComponent } from './user-config/user-config.component';
+
 
 const oktaConfig = {
   issuer: 'https://{yourOktaDomain}/oauth2/default',
@@ -62,7 +63,8 @@ const oktaConfig = {
     ProductCardViewComponent,
     ShoppingCartComponent,
     OrderPageComponent,
-    TestCompComponent
+    TestCompComponent,
+    UserConfigComponent
 
   ],
   imports: [
@@ -86,13 +88,12 @@ const oktaConfig = {
     MatPaginatorModule,
     MatGridListModule,
     MatBadgeModule,
-    OktaAuthModule
+
 
 
   ],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-    { provide: OKTA_CONFIG, useValue: oktaConfig }],
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]})
 export class AppModule { }
 

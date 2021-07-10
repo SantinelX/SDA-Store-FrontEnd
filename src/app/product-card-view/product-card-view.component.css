@@ -1,8 +1,10 @@
 .product_card{
   max-width: 200px;
+  min-height: 400px;
   max-height: 400px;
   float: left;
   margin: 10px;
+  background-color: darkgray;
 }
 
 .paragraph_description{

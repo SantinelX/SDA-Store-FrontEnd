@@ -1,13 +1,14 @@
-.total-wraper{
+.total-wraper {
+  background-color: aliceblue;
   float: right;
   margin-right: 20px;
   width: 24%;
   height: 20%;
 }
 
-
-
 .product_card {
+  background-color: aliceblue;
+  display: flex;
   margin-top: 10px;
   margin-left: 20px;
   margin-bottom: 10px;
@@ -19,31 +20,21 @@
   height: 200px;
 }
 
-.product-title{
-  border: 10px;
-  font-weight: bolder;
-  padding: 10px;
+.main {
+  width: 80%;
 }
 
-.price-wrapper{
-  max-width: 15%;
-  min-width: 15%;
-  color: black;
-  font-weight: bolder;
-  float: left;
+.quantity{
+  display: flex;
 }
 
-.product-price{
-  padding: 10px;
-  justify-content: flex-end;
-  min-width: 100%;
+.quantity-selector {
+  margin-right: 5px;
+  width: 30px;
+  padding-left: 5px;
 }
-.quantity-selector{
-  padding: 10px;
-  max-width: 10%;
+.price{
+  margin-top: 100px;
 }
-.description{
-  max-width: 100%;
-  max-height: 10px;
-}
+
 

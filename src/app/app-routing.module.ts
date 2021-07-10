@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {ProductsComponent} from './products/products.component';
-import {RouteGuardService} from './route-guard.service';
 import {CreateCategoryComponent} from './create-category/create-category.component';
 import {CategoriesTreeViewComponent} from './categories-tree-view/categories-tree-view.component';
 import {CreateProductComponent} from './create-product/create-product.component';
@@ -13,6 +12,7 @@ import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {OrderPageComponent} from './order-page/order-page.component';
 import {TestCompComponent} from './test-comp/test-comp.component';
 import {NavBarComponent} from './nav-bar/nav-bar.component';
+import {UserConfigComponent} from './user-config/user-config.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -27,7 +27,8 @@ const routes: Routes = [
   {path: 'shopping-cart', component: ShoppingCartComponent},
   {path: 'my-orders', component: OrderPageComponent},
   {path: 'test', component: TestCompComponent},
-  {path: 'navbar', component: NavBarComponent}
+  {path: 'navbar', component: NavBarComponent},
+  {path: 'user-update', component: UserConfigComponent}
 
 ];
 

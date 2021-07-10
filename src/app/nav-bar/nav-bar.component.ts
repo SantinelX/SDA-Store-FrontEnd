@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShoppingCartService} from '../shopping-cart.service';
 import {AppConfig} from '../config/app-config';
 import {Router} from '@angular/router';
-import {OktaAuthService} from '@okta/okta-angular';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,16 +14,17 @@ export class NavBarComponent implements OnInit {
   @Input() numberOfProductsInCart = 0;
   @Output() searchChangeEvent: EventEmitter<string> = new EventEmitter<string>();
   role = localStorage.getItem('ROLE');
-  userName = 'Gigi';
+  userName = 'Calin';
 
 
-  constructor(private shoppingCartService: ShoppingCartService, private router: Router, public oktaAuth: OktaAuthService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
 
    ngOnInit(): void {
     if (localStorage.getItem(AppConfig.AUTHORISATION_HEADER)) {
       this.shoppingCartService.getProductsFromcart().subscribe((data) => {
         this.numberOfProductsInCart = data.productsInCart.length;
+        // this.reciveUserName();
       });
     }
   }

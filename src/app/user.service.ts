@@ -21,5 +21,8 @@ export class UserService {
 
   getUserById(userId: number): Observable<UserDto> {
     return this.httpClient.get<UserDto>(AppConfig.API_PATH + '/user/' + userId);
-}
+  }
+  update(requestUserDto: UserDto): Observable<UserDto> {
+    return this.httpClient.post<UserDto>(AppConfig.API_PATH + '/ubdate', requestUserDto);
+  }
 }

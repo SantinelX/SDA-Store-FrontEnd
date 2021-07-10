@@ -9,13 +9,20 @@ import {ShoppingCartResponseDto} from './model/shopping-cart-model';
 })
 export class ShoppingCartService {
 
-  constructor(private httpClient: HttpClient) { }
+  SHOPPING_CART_API = AppConfig.API_PATH + '/shopping-cart';
 
-  addProductToCart(productId: number): Observable<any>{
-    return  this.httpClient.put<ShoppingCartResponseDto>(AppConfig.API_PATH + '/shopping-cart', productId);
+  constructor(private httpClient: HttpClient) {
   }
 
-  getProductsFromcart(): Observable<ShoppingCartResponseDto>{
+  addProductToCart(productId: number): Observable<any> {
+    return this.httpClient.put<ShoppingCartResponseDto>(AppConfig.API_PATH + '/shopping-cart', productId);
+  }
+
+  getProductsFromcart(): Observable<ShoppingCartResponseDto> {
     return this.httpClient.get<ShoppingCartResponseDto>(AppConfig.API_PATH + '/shopping-cart');
+  }
+
+  removeProductFromCart(id: number): Observable<any> {
+    return this.httpClient.delete(this.SHOPPING_CART_API + '/delete/' + id);
   }
 }

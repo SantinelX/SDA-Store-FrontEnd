@@ -4,9 +4,12 @@
   <app-nav-bar [numberOfProductsInCart]="totalNumberOfElementsInCart" (searchChangeEvent)="filterProducts($event)"></app-nav-bar>
 </header>
 
+
+
 <div class="page-wrapper">
   <!-- Filter -->
   <div class="filter-wrapper" id="filter">
+    <mat-card>
     <h1 style="font-weight: bold; color: #3f51b5">Filter Products</h1>
     <h4 style="color: #3f51b5; margin-top: 30px; font-weight: bold">..by Category</h4>
     <span layout="row" style="margin-top: 0px"><hr flex/>
@@ -38,9 +41,10 @@
         <mat-option *ngFor="let type of productTypes" value="{{type}}">{{type}}</mat-option>
       </mat-select>
     </mat-form-field>
+    </mat-card >
   </div>
 
-  <!-- Product & Paginator -->
+  <!-- Product -->
   <div class = "product-display-wrapper">
     <div class="product-list">
       <mat-card class="product_card" *ngFor="let product of products">
@@ -50,23 +54,24 @@
         </mat-card-header>
         <img  mat-card-image src="https://media.telekom.ro/images/lp/tv-net-voce/tv_banner.png"/>
         <mat-card-content>
-          <p class="paragraph_description">
             {{product.description}}
-          </p>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-button disabled>{{product.price}} Ron</button>
+          <div class="price">
+            <label>
+              {{product.price}} Ron
+            </label>
+          </div>
           <button mat-button (click)="addProductToCart(product.id)" [disabled]="product.stock === 0 ? true : null"> Add to Cart </button>
-        </mat-card-actions>
       </mat-card>
+    </div>
+    <!-- Paginator -->
+    <div class="paginator">
+      <mat-paginator class="paginator-style" [length]="totalNumberOfElements" [pageSizeOptions]="[5,10,15,20]" (page)="changePage($event)"></mat-paginator>
     </div>
 
   </div>
+</div>
 
-</div>
-<div class="paginator">
-  <mat-paginator class="paginator-style" [length]="totalNumberOfElements" [pageSizeOptions]="[5,10]" (page)="changePage($event)"></mat-paginator>
-</div>
 
 
 

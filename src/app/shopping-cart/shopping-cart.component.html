@@ -8,7 +8,7 @@
     <button (click)="makeOrder()">Place Order</button>
   </mat-card>
   <mat-card class="product_card" *ngFor="let product of products">
-    <img class="product-img-wrapper" src="https://media.telekom.ro/images/lp/tv-net-voce/tv_banner.png"/>
+    <img class="product-img-wrapper" src="https://www.pngkey.com/png/detail/208-2080033_arduino-uno-wifi-rev2-arduino-uno-wifi-rev.png"/>
     <div class="main">
       <mat-card-title class="product-title">{{product.product_name}}</mat-card-title>
       <mat-card-subtitle class="product-description">Product Description:</mat-card-subtitle>
@@ -28,7 +28,7 @@
         </mat-select>
         <label style="font-weight: bolder"> buc.</label>
       </div>
-      <button (click)="removeProductFromShoppingCart(product.id)">Remove</button>
+      <button style="color: red; border: none; cursor: pointer" (click)="removeProductFromShoppingCart(product.id)">Remove</button>
       <div class="price">
         <label style="font-weight: bolder; margin-left: 15px">Price</label>
         <mat-card-subtitle class="product-price">

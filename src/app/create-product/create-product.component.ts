@@ -6,6 +6,7 @@ import {ProductRequestDto, ProductResponseDto} from '../model/product-model';
 import {CategoryService} from '../category.service';
 
 
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -21,7 +22,11 @@ export class CreateProductComponent implements OnInit {
 
 
 
-  constructor(private productService: ProductService, private categoryService: CategoryService, private toastr: ToastrService) { }
+  constructor(private productService: ProductService,
+              private categoryService: CategoryService,
+              private toastr: ToastrService,
+
+  ) { }
 
   ngOnInit(): void {
     this.categoryService.findAll().subscribe((data: CategoryResponseDto[]) => {
@@ -38,6 +43,7 @@ export class CreateProductComponent implements OnInit {
   saveProduct(): void {
     this.productService.createProduct(this.product).subscribe((response: ProductResponseDto) => {
       this.toastr.success('Product created succesfuly.');
+      window.location.reload();
     }, errorMsg => {
       this.toastr.error('Something went Wrong. Product not saved !!! [' + errorMsg + ']');
     });

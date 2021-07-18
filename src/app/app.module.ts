@@ -26,7 +26,10 @@ import {
 import {MatTreeModule, MatTreeNode} from '@angular/material/tree';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { CreateProductComponent } from './create-product/create-product.component';
-import { ProductTableViewComponent } from './product-table-view/product-table-view.component';
+import {
+  ProductDeleteDialogComponent,
+  ProductTableViewComponent
+} from './product-table-view/product-table-view.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -37,6 +40,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { TestCompComponent } from './test-comp/test-comp.component';
 import { UserConfigComponent } from './user-config/user-config.component';
+
 
 
 const oktaConfig = {
@@ -64,7 +68,8 @@ const oktaConfig = {
     ShoppingCartComponent,
     OrderPageComponent,
     TestCompComponent,
-    UserConfigComponent
+    UserConfigComponent,
+    ProductDeleteDialogComponent
 
   ],
   imports: [
@@ -88,7 +93,6 @@ const oktaConfig = {
     MatPaginatorModule,
     MatGridListModule,
     MatBadgeModule,
-
 
 
   ],

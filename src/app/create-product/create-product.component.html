@@ -3,52 +3,46 @@
   <app-nav-bar></app-nav-bar>
 </header>
 <div>
-  <mat-card style="background-color: aliceblue; border: blue solid 1px">
+  <mat-card>
     <mat-card-title>Create Product</mat-card-title>
-    <hr>
-    <form>
-      <mat-form-field>
+    <hr style="margin-right: 10px">
+    <form class="product-form-wrapper">
+      <mat-form-field class="product-title">
         <mat-label>Product Title</mat-label>
         <input matInput [(ngModel)]="product.product_name" name="product_title">
       </mat-form-field>
-      <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>
-          <mat-card class="product_img_form">
-            <img mat-card-image class = "product_img" style="..." src="assets/img/SDA%20Store%20Logo.png" alt="">
-          </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field class="example-full-width">
-            <mat-label>Product description</mat-label>
-            <textarea matInput [(ngModel)]="product.description" name="product_description"></textarea>
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-form-field>
+      <mat-form-field class="product-thumbnail">
+        <mat-label>IProduct Image</mat-label>
+        <input matInput [(ngModel)]="product.thumbnail" name="thumbnail">
+      </mat-form-field>
+      <mat-form-field class="product-description">
+        <mat-label>Product description</mat-label>
+        <textarea matInput [(ngModel)]="product.description" name="product_description"></textarea>
+      </mat-form-field>
+      <mat-form-field class="product-category">
         <mat-label>Category</mat-label>
         <mat-select name = "category" [(ngModel)]="product.categoryId" >
           <mat-option *ngFor="let category of categorys" value="{{category.id}}">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="product-productType">
         <mat-label>Product Type</mat-label>
         <mat-select name = "productType" [(ngModel)]="product.productType">
           <mat-option *ngFor="let productType of productTypes" value="{{productType}}">{{productType}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <br>
-      <mat-form-field>
+      <mat-form-field class="product-price">
         <mat-label>Product Price</mat-label>
         <input matInput [(ngModel)]="product.price" name="product_title">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="product-stock">
         <mat-label>Product Stock</mat-label>
         <input matInput [(ngModel)]="product.stock" name="product_title">
       </mat-form-field>
-      <br>
-      <button mat-raised-button (click)="saveProduct()">Create Product</button>
-      <button mat-raised-button color="warn">Cancel</button>
+      <button class="create-product-btn" (click)="saveProduct()">Create Product</button>
+      <button class="cancel-btn">Cancel</button>
     </form>
   </mat-card>
 </div>
+
 

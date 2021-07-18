@@ -54,4 +54,8 @@ export class ProductService {
   getProductTypes(): Observable<string[]>{
     return this.httpClient.get<string[]>(AppConfig.API_PATH + '/product-types');
   }
+
+  deleteProduct(id: number): Observable<any>{
+    return this.httpClient.delete(this.PRODUCT_API + '/delete/' + id);
+  }
 }

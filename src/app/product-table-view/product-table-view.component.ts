@@ -1,8 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+// @ts-ignore
+
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {ProductFilters, ProductResponseDto} from '../model/product-model';
 import {ProductService} from '../product.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {ToastrService} from 'ngx-toastr';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-table-view',
@@ -11,7 +15,7 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
 })
 export class ProductTableViewComponent implements OnInit {
 
-  columns = ['productId', 'productName', 'productCategory', 'productPrice',  'productActions' ];
+  columns = ['productId', 'productName', 'productThumbnail', 'productDescription', 'productCategory', 'productPrice',  'productActions' ];
   products: ProductResponseDto[] = [];
   dataSource = new MatTableDataSource<ProductResponseDto>();
   totalNumberOfElements = 0;
@@ -19,10 +23,13 @@ export class ProductTableViewComponent implements OnInit {
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+              private toastr: ToastrService,
+              public deleteProductDialog: MatDialog,
+              public editProductDialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
   }
 
   getProducts(page: number, pageSize: number, productFiter: ProductFilters): void{
@@ -40,23 +47,56 @@ export class ProductTableViewComponent implements OnInit {
     console.log('Page has changed!!!');
   }
 
-  delete(productId: number): void {
-    console.log('Deleting !!!', productId);
-  }
-
   filter(event: KeyboardEvent): void{
     this.productFilters.name = this.productFilters.name + event.key;
     console.log(event.key);
   }
 
   filterTable(): void {
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
   }
 
   getCategoryId(event: any): void {
     this.productFilters.categoryId = event;
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
     console.log(event);
   }
 
+  showProductDeleteDialog(id: number): void {
+    const deleteDialogReference = this.deleteProductDialog.open(ProductDeleteDialogComponent, {data: {productId: id}});
+    deleteDialogReference.afterClosed().subscribe(data => {
+      window.location.reload();
+    });
+  }
+}
+
+@Component({
+  selector: 'app-product-delete-dialog',
+  templateUrl: 'product-delete-dialog.html',
+  // styleUrls: ['./product-delete-dialog.css']
+})
+
+export class ProductDeleteDialogComponent implements  OnInit {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              public deleteProduct: MatDialogRef<ProductTableViewComponent>,
+              private toastr: ToastrService,
+              private productService: ProductService){
+  }
+
+  ngOnInit(): void {
+  }
+
+  handleDeleteProduct(): void{
+    this.productService.deleteProduct(this.data.productId).subscribe((data) => {
+      this.toastr.success('The product has been deleted');
+      window.location.reload();
+    },  error => {
+      this.toastr.error('ERROR !!! The product has not been removed from database !!!');
+    });
+  }
+
+  handleClose(): void {
+    this.deleteProduct.close();
+  }
 }

@@ -1,27 +1,61 @@
-.full-width {
-  width: 100%;
+/******** Tabel Format Area ********/
+
+th {
+  color: blue;
+  font-weight: bold;
+  align-content: center;
 }
 
-.wrapper-div {
-  display: block;
-  width: 100%;
+.table-arrea {
+  display: flex;
+  justify-content: center;
+}
+.table-wraper {
+  width: 70%;
+  margin-left: 20px;
+  border: blue solid 2px;
+  border-radius: 0.5em;
+}
+.filter-wrapper{
+  display: flex;
+  justify-content: center;
+ }
+
+.table-header{
+  color: blue;
+  font-weight: bold;
+}
+.id-column {
+  width: 20px;
+}
+.name-column{
+  width: 300px;
+}
+.img-column {
+  width: 80px;
+  height: 10px;
+}
+.description-column{
+  width: 600px;
+  max-height: 10px;
+}
+.category-column{
+  width: 150px;
+}
+.price-column {
+  width: 100px;
+}
+.action-column {
+  width: 100px;
 }
 
-.table {
-  width: 100%;
+/********************************************************/
+
+/******************** Tabel Action Icons Area *****************/
+
+.delete-product-icon{
+  color: red;
 }
-
-.filter-wraper {
-  margin: 10px;
-  border: #3f51b5;
-  border-radius: 12px;
+.edit-product-icon {
+  color: green;
 }
-
-.page-wraper{
-  margin: 100px;
-  padding: 100px;
-  border: 100px;
-}
-
-
-

@@ -52,7 +52,7 @@
           <mat-card-title>{{product.product_name}}</mat-card-title>
           <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
         </mat-card-header>
-        <img  mat-card-image src="https://media.telekom.ro/images/lp/tv-net-voce/tv_banner.png"/>
+        <img  mat-card-image src="{{product.thumbnail}}"/>
         <mat-card-content>
             {{product.description}}
         </mat-card-content>
@@ -66,7 +66,7 @@
     </div>
     <!-- Paginator -->
     <div class="paginator">
-      <mat-paginator class="paginator-style" [length]="totalNumberOfElements" [pageSizeOptions]="[5,10,15,20]" (page)="changePage($event)"></mat-paginator>
+      <mat-paginator class="paginator-style" [length]="totalNumberOfElements" [pageSizeOptions]="[10,20,30]" (page)="changePage($event)"></mat-paginator>
     </div>
 
   </div>

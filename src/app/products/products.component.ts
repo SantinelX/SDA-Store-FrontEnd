@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ProductFilters, ProductResponseDto} from '../model/product-model';
 import {PageEvent} from '@angular/material/paginator';
 import {ShoppingCartService} from '../shopping-cart.service';
 import {ShoppingCartResponseDto} from '../model/shopping-cart-model';
 import {Toast, ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-products',
@@ -23,10 +24,12 @@ export class ProductsComponent implements OnInit {
     productType: ''
   };
 
-  constructor(private productService: ProductService, private shoppingCartService: ShoppingCartService, private toastr: ToastrService) { }
+  constructor(private productService: ProductService,
+              private shoppingCartService: ShoppingCartService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getProducts(0, 5, {});
+    this.getProducts(0, 10, {});
     this.productService.getProductTypes().subscribe((data: string[]) => {
       this.productTypes = data;
     });
@@ -54,7 +57,7 @@ export class ProductsComponent implements OnInit {
 
   filterProducts(event: any): void {
     this.productFilters.name = event;
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
   }
 
   changeLowPrice(event: any): void {
@@ -72,17 +75,17 @@ export class ProductsComponent implements OnInit {
     } else {
       this.productFilters.highPrice = event.target.value;
     }
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
   }
 
   changeProductType(event: any): void {
     this.productFilters.productType = event.value;
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
   }
 
   filterProductsByCategory(event: any): void {
     this.productFilters.categoryId = event;
-    this.getProducts(0, 5, this.productFilters);
+    this.getProducts(0, 10, this.productFilters);
   }
 
 }

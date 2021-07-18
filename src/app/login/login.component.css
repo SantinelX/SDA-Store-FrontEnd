@@ -16,12 +16,12 @@ mat-card {
 mat-card-title {
   font-weight: bolder;
   font-size: 28px;
-  color: bisque;
+  color: blue;
 }
 
 mat-label{
   font-weight: bold;
-  color: bisque;
+  color: blue;
   font-size: 18px;
 }
 
@@ -32,4 +32,15 @@ input{
 
 mat-form-field{
   width: 200px;
+}
+
+button {
+  color: blue;
+  width: 100px;
+  height: 25px;
+  border: blue solid 1px;
+  border-radius: 2em;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: lightblue;
 }

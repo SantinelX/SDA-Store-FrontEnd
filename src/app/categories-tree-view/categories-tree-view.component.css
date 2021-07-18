@@ -34,3 +34,6 @@
   background-color: aliceblue;
 }
 
+[mat-dialog-title]{
+  color: red ;
+}

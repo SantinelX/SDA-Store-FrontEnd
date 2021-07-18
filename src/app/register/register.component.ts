@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
   register(): void {
       this.userService.register(this.user).subscribe((data ) => {
         this.router.navigate(['/login']);
-        console.log('Success', data);
       }, errorMessage => {
         this.toastr.error('User already exists');
         console.log('error', errorMessage);

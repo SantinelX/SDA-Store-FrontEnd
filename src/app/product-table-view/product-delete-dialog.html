@@ -1,0 +1,49 @@
+<style>
+
+  .title {
+    color: red;
+    font-weight: bold;
+  }
+
+  .delete-btn{
+    color: red;
+    font-weight: bold;
+    border-radius: 2em;
+    border: red  solid 2px;
+    width: 100px;
+    height: 30px;
+    transition-duration: 0.4s;
+  }
+  .delete-btn:hover{
+    background-color: red;
+    color: white;
+  }
+
+  .cancel-btn{
+    color: blue;
+    font-weight: bold;
+    border-radius: 2em;
+    border: blue  solid 2px;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    transition-duration: 0.4s;
+  }
+  .cancel-btn:hover{
+    background-color: blue;
+    color: white;
+  }
+
+  p {
+    font-weight: bolder;
+  }
+</style>
+
+<h1 class="title">Delete Product</h1>
+<div>
+  <p>Are you shore that do you want to delete this product?</p>
+</div>
+<div >
+  <button class="delete-btn" (click)="handleDeleteProduct()">YES</button>
+  <button class="cancel-btn" (click)="handleClose()">NO, thanks</button>
+</div>

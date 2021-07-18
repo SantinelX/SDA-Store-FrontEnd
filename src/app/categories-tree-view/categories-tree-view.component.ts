@@ -45,15 +45,6 @@ export class CategoriesTreeViewComponent implements OnInit {
     && node.subCategory !== null
     && node.subCategory.length > 0
 
-  // delete(id: number): void {
-  //   this.categoryService.delete(id).subscribe((data): any => {
-  //    this.toastr.success('The category has been deleted.');
-  //    this.ngOnInit();
-  //   }, error => {
-  //     this.toastr.error('The categori has not been deleted. Error: ' + error);
-  //   });
-  // }
-
   checkNodeId(node: any): void{
     this.categoryChangeEvent.emit(node.id);
     console.log(node);
@@ -80,11 +71,10 @@ export class CategoriesTreeViewComponent implements OnInit {
 
 @Component({
   selector: 'app-category-delete-dialog',
-  templateUrl: 'category-delete-dialog.html'
+  templateUrl: 'category-delete-dialog.html',
 })
 
 export class CategoryDeleteDialogComponent implements OnInit {
-
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public deleteDialog: MatDialogRef<CategoriesTreeViewComponent>,
               private categoryService: CategoryService, private toastr: ToastrService) {
@@ -105,7 +95,6 @@ export class CategoryDeleteDialogComponent implements OnInit {
 
   handleClose(): void {
     this.deleteDialog.close();
-    console.log(' "NO" button was presed');
   }
 }
 
